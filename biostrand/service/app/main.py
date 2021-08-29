@@ -24,6 +24,7 @@ class QueryRequest(BaseModel):
     query_vector: List[float]
     collection: Optional[str] = "pdb"
     top: Optional[int] = 5000
+    nprobe: Optional[int] = 10
 
 @app.on_event("startup")
 async def startup_event():
@@ -38,7 +39,7 @@ def root():
 def get_similar_sequences(request: QueryRequest):
     """
     """
-    search_params = {"metric_type": "IP", "params": {"nprobe": 1}}
+    search_params = {"metric_type": "IP", "params": {"nprobe": request.nprobe}}
 
     connections.connect(host=DBHOST, port=DBPORT)
     collection = Collection(name=request.collection)
