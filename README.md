@@ -1,0 +1,8 @@
+- install docker-compose (see install.sh)
+- go into biostrand/db folder
+- start the database service: docker-compose up -d (you can bring it down using docker-compose down)
+- run python create_collection.py
+- run python load_vectors.py ../../data/npy/vectors/ --nfiles 581 (data/npy/vectors is wherever you stored the npy vector files)
+- run python create_index.py
+- go into biostrand/service and run uvicorn app.main:app --no-access-log --reload --host localhost --port 9001
+- use the sdk python code to make queries
