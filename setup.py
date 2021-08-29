@@ -19,7 +19,10 @@ setup(
     install_requires=[
         "pymilvus==2.0.0rc4",
         "pymilvus-orm==2.0.0rc4",
-        "h5py==3.4.0"
+        "h5py==3.4.0",
+        "scikit-learn==0.24.2"
+        "fastapi==0.68.1"
+        "uvicorn==0.15.0"
     ]
 )
 
