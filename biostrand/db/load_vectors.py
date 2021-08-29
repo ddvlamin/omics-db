@@ -25,14 +25,17 @@ if __name__ == "__main__":
     connections.connect(host=args.host, port=args.port)
     collection = Collection(name=collection_name)
 
+    stop = 0
     for fileindex in range(1,nfiles+1):
         filepath = os.path.join(args.basepath, f"{args.fileprefix}_{fileindex}.npy")
         vectors = np.load(filepath)
+        if vectors.shape[0] != block_size:
+            print(f"{filepath} has less than {block_size} vectors: {vectors.shape}")
         vectors = normalize(vectors)
         vectors = vectors.tolist()
 
-        start = (fileindex-1)*block_size
-        stop = start+block_size
+        start = stop
+        stop = start+len(vectors)
         ids = [i for i in range(start, stop)]
 
         collection.insert([ids, vectors])
@@ -42,3 +45,6 @@ if __name__ == "__main__":
 
     print(f"collections: {connections.get_connection('default').list_collections()}")
     print(f"number of records: {collection.num_entities}")
+    print(f"last id: {stop-1}")
+
+    connections.disconnect("default")
