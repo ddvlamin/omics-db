@@ -1,9 +1,4 @@
 """
-The client that calls the UHasselt validation ranking service
-
-This hyft client calls a service to fetch sequences that have at least one hyft pattern in common with the query sequence.
-It also contains a method for fetching second stage sequences, i.e. sequences who have at least a hyft in common with the
-top similar sequences
 """
 
 import logging
