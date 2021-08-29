@@ -4,30 +4,44 @@
 #
 #    pip-compile setup.py
 #
+asgiref==3.4.1
+    # via uvicorn
 certifi==2021.5.30
     # via requests
 charset-normalizer==2.0.4
     # via requests
+click==8.0.1
+    # via uvicorn
+fastapi==0.68.1
+    # via biostrand-vector-db (setup.py)
 grpcio==1.37.1
     # via
     #   grpcio-tools
     #   pymilvus
 grpcio-tools==1.37.1
     # via pymilvus
+h11==0.12.0
+    # via uvicorn
 h5py==3.4.0
     # via biostrand-vector-db (setup.py)
 idna==3.2
     # via requests
+joblib==1.0.1
+    # via scikit-learn
 mmh3==3.0.0
     # via pymilvus
 numpy==1.21.2
     # via
     #   h5py
     #   pandas
+    #   scikit-learn
+    #   scipy
 pandas==1.2.4
     # via pymilvus-orm
 protobuf==3.17.3
     # via grpcio-tools
+pydantic==1.8.2
+    # via fastapi
 pymilvus==2.0.0rc4
     # via
     #   biostrand-vector-db (setup.py)
@@ -40,15 +54,27 @@ pytz==2021.1
     # via pandas
 requests==2.26.0
     # via pymilvus
+scikit-learn==0.24.2
+    # via biostrand-vector-db (setup.py)
+scipy==1.7.1
+    # via scikit-learn
 six==1.16.0
     # via
     #   grpcio
     #   protobuf
     #   python-dateutil
+starlette==0.14.2
+    # via fastapi
+threadpoolctl==2.2.0
+    # via scikit-learn
+typing-extensions==3.10.0.0
+    # via pydantic
 ujson==4.1.0
     # via pymilvus
 urllib3==1.26.6
     # via requests
+uvicorn==0.15.0
+    # via biostrand-vector-db (setup.py)
 
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools
