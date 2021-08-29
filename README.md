@@ -1,4 +1,4 @@
-- download the vector data first from here: s3://biostrand-playground-gslghz/workspace/dieter/vector-embeddings/pdb/
+- download the vector data first from here: s3://PLAYGROUND_BUCKET/workspace/dieter/vector-embeddings/pdb/
 - put the meta file in biostrand/service/data/
 - install docker-compose (see install.sh)
 - go into biostrand/db folder
