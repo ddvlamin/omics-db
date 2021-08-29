@@ -1,4 +1,16 @@
 - pip install -r requirements.txt
+- download the vector database files: s3://PLAYGROUND_BUCKET/workspace/dieter/vector-embeddings/volumes/
+- put the files in the volumes folder in the same folder where the docker-compose.yml file resides, ie. biostrand/db
+- download the meta (mapping database id to sequence id) file from here: s3://PLAYGROUND_BUCKET/workspace/dieter/vector-embeddings/pdb/meta/index2id.json
+- put the meta file in biostrand/service/data/
+- install docker-compose (see install.sh)
+- go into biostrand/db folder
+- start the database service: docker-compose up -d (you can bring it down using docker-compose down)
+- go into biostrand/service and run uvicorn app.main:app --no-access-log --reload --host localhost --port 9001
+- use the sdk python code to make queries
+
+If you want to recreate the vector database
+- pip install -r requirements.txt
 - download the vector data first from here: s3://PLAYGROUND_BUCKET/workspace/dieter/vector-embeddings/pdb/
 - put the meta file in biostrand/service/data/
 - install docker-compose (see install.sh)
