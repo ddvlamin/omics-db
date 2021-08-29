@@ -33,7 +33,7 @@ class VectorClient():
             raise ValueError(f"method {method} not supported")
 
         if response.status_code != requests.codes.ok:
-            logging.error(f"An error occured with code {response.status_code}, contact Biostrand and provide your query")
+            logging.error(f"An error occured with code {response.status_code}, contact ddvlamin")
             return {}
 
         json_response = response.json()
