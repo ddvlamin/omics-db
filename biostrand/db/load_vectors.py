@@ -12,7 +12,7 @@ if __name__ == "__main__":
     parser.add_argument('--host', type=str, default="localhost", help='db host')
     parser.add_argument('--port', type=str, default="19530", help='db port')
     parser.add_argument('--dim', type=int, default=6165, help='number of dimensions of the embedding vectors')
-    parser.add_argument('--nfiles', type=int, default=581, help='number of files to load')
+    parser.add_argument('--nfiles', type=int, default=582, help='number of files to load')
     parser.add_argument('--blocksize', type=int, default=1000, help='number of vectors in one file')
     parser.add_argument('--collection', type=str, default="pdb", help='name of the collection')
     args = parser.parse_args()
@@ -41,7 +41,7 @@ if __name__ == "__main__":
         collection.insert([ids, vectors])
         connections.get_connection("default").flush([collection_name])
 
-        print(f"loaded {filepath}")
+        print(f"loaded {filepath}, last id {stop-1}")
 
     print(f"collections: {connections.get_connection('default').list_collections()}")
     print(f"number of records: {collection.num_entities}")
