@@ -7,7 +7,7 @@ if __name__ == "__main__":
     parser.add_argument('--host', type=str, default="localhost", help='db host')
     parser.add_argument('--port', type=str, default="19530", help='db port')
     parser.add_argument('--collection', type=str, default="pdb", help='name of the collection')
-    parser.add_argument('--nclusters', type=int, default=1024, help='number of cluster units')
+    parser.add_argument('--nclusters', type=int, default=2048, help='number of cluster units')
     args = parser.parse_args()
 
     connections.connect(host=args.host, port=args.port)
