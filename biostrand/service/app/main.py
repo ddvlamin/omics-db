@@ -8,6 +8,7 @@ from fastapi.logger import logger
 from pydantic import BaseModel
 
 from pymilvus_orm import connections, Collection
+from sklearn.preprocessing import normalize
 
 DBHOST = "localhost"
 DBPORT = "19530"
@@ -46,7 +47,9 @@ def get_similar_sequences(request: QueryRequest):
     """
     search_params = {"metric_type": "IP", "params": {"nprobe": request.nprobe}}
 
-    candidate_hits = app.collection.search([request.query_vector], "sequence_vector", search_params, request.top, "", output_fields=["id"])
+    query_vector = np.array(request.query_vector).reshape(-1,1)
+    query_vector = normalize(query_vector).flatten().tolist()
+    candidate_hits = app.collection.search([query_vector], "sequence_vector", search_params, request.top, "", output_fields=["id"])
 
     result = {}
     for candidate in candidate_hits:
